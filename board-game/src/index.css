@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d441cefe-a967-4209-918d-d3d09831b3e7/dfh6dy6-468efc4c-02db-4c3e-aca1-d9d6e922081f.png/v1/fill/w_1280,h_803,q_80,strp/jeopardy__season_31_background_logo__2014_2015__by_onscreenthatprods_dfh6dy6-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODAzIiwicGF0aCI6IlwvZlwvZDQ0MWNlZmUtYTk2Ny00MjA5LTkxOGQtZDNkMDk4MzFiM2U3XC9kZmg2ZHk2LTQ2OGVmYzRjLTAyZGItNGMzZS1hY2ExLWQ5ZDZlOTIyMDgxZi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.MKrm3TaHlSC2YcKA0wxAlWhU90Thc8vOyaK5e4s-nE0');
+  background-size: cover;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
