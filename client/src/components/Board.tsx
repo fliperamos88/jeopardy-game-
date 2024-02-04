@@ -10,6 +10,7 @@ const Board = () => {
   const [gameOver, setGameOver] = useState<boolean>(true);
   const [newGame, setNewGame] = useState<boolean>(true);
   const [loadGame, setLoadGame] = useState<boolean>(false);
+  const URL: string | any = process.env.REACT_APP_URL;
 
   const startGame = async () => {
     setLoadGame(true);
@@ -23,7 +24,7 @@ const Board = () => {
   const getClues = async () => {
     const {
       data: { data },
-    } = await axios.get('http://localhost:3001/clues/random', {
+    } = await axios.get(URL, {
       params: { limit: 25 },
     });
     let cluesArrays = [];
