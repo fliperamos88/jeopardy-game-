@@ -1,8 +1,5 @@
-// const express = require('express');
-// const axios = require('axios');
-// require('dotenv').config();
-import express from 'express';
-import axios from 'axios';
+const express = require('express');
+const axios = require('axios');
 
 const router = express.Router();
 
@@ -18,4 +15,4 @@ router.get('/', async function (req, res, next) {
   }
 });
 
-export default router;
+module.exports = router;

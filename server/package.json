@@ -9,7 +9,7 @@
     "client": "npm install --prefix ../client && npm run build --prefix ../client && npm install",
     "dev": "concurrently \"npm run client\" \"npm start\""
   },
-  "type": "module",
+  "type": "commonjs",
   "author": "",
   "license": "ISC",
   "dependencies": {
