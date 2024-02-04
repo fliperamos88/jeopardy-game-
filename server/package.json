@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app",
-    "client": "npm start --prefix ../board-game",
+    "start": "node app.js",
+    "client": "npm install --prefix ../client && npm run build --prefix ../client && npm install",
     "dev": "concurrently \"npm run client\" \"npm start\""
   },
   "type": "module",
@@ -16,6 +16,7 @@
     "axios": "^1.6.5",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
     "express": "^4.18.2"
   }
 }

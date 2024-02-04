@@ -1,9 +1,12 @@
+// const express = require('express');
+// const axios = require('axios');
+// require('dotenv').config();
 import express from 'express';
 import axios from 'axios';
 
 const router = express.Router();
 
-export const categoryRoute = router.get('/', async function (req, res, next) {
+router.get('/', async function (req, res, next) {
   try {
     const { data } = await axios.get(
       `http://cluebase.lukelav.in/clues/random?limit=${req.query.limit}`
@@ -14,3 +17,5 @@ export const categoryRoute = router.get('/', async function (req, res, next) {
     return next(err);
   }
 });
+
+export default router;

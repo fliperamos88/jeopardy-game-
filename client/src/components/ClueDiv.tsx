@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext, memo } from 'react';
 import { ClueContext } from '../CellContext';
 
-type Answer = {
-  answer: boolean;
-  setAnswer: (val: boolean) => void;
+type ClueProp = {
+  gameOver: boolean;
+  setGameOver: (val: boolean) => void;
 };
-
 type Clue = {
   id: string | null;
   game_id: number | null;
@@ -17,15 +16,14 @@ type Clue = {
   response: string | null;
 };
 
-const ClueDiv = () => {
+const ClueDiv = ({ gameOver, setGameOver }: ClueProp) => {
   const clueContext = useContext(ClueContext);
   const [catCell, setCatCell] = useState<Clue | null>(null);
   const [show, setShow] = useState<string | null>();
   const [disabled, setDisabled] = useState<boolean>(false);
-  const [gameOver, setGameOver] = useState<boolean>(false);
-
-  const pickAClueMSG = 'Pick a Value!';
-  const answerFirstMSG = 'Finish this clue before picking a new Value!';
+  const [endGame, setEndGame] = useState<boolean>(false);
+  const pickAClueMSG = 'Pick a value!';
+  const answerFirstMSG = 'Finish this clue before picking a new value!';
   const finalMsg = 'Only one left! You got this!';
 
   const changeClueDiv = () => {
@@ -34,6 +32,21 @@ const ClueDiv = () => {
     clueContext?.setAnswer(false);
     clueContext?.setGameProgress((prev) => prev + 1);
   };
+
+  useEffect(() => {
+    clueContext?.setGameProgress(0);
+    clueContext?.setAnswer(false);
+    clueContext?.setClue(null);
+  }, [gameOver]);
+
+  useEffect(() => {
+    if (!clueContext?.clue) {
+      setEndGame(false);
+      setShow('');
+      setDisabled(false);
+      setCatCell(null);
+    }
+  }, [clueContext?.clue]);
 
   useEffect(() => {
     if (clueContext?.clue) {
@@ -48,13 +61,13 @@ const ClueDiv = () => {
 
   useEffect(() => {
     if (clueContext?.gameProgress === 25) {
-      setGameOver(true);
+      setEndGame(true);
     }
   }, [clueContext?.gameProgress]);
 
   return (
     <>
-      {!gameOver && (
+      {!endGame && (
         <div
           className="d-block justify-content-center text-center mt-5 "
           style={{ fontWeight: '700', color: 'white', fontSize: '1.5rem' }}
@@ -67,7 +80,7 @@ const ClueDiv = () => {
             : pickAClueMSG}
         </div>
       )}
-      {gameOver && (
+      {endGame && (
         <div
           className="d-block justify-content-center text-center mt-5 "
           style={{ fontWeight: '700', color: 'white', fontSize: '1.5rem' }}
@@ -76,19 +89,23 @@ const ClueDiv = () => {
         </div>
       )}
       <div className="clue-div">
-        {catCell && (
+        {clueContext?.clue && (
           <>
             <div>Value: ${catCell?.value}</div>
             <div>Category: {catCell?.category}</div>
             <div>{catCell?.clue}</div>
-            <button onClick={() => changeClueDiv()} disabled={disabled}>
+            <button
+              onClick={() => changeClueDiv()}
+              disabled={disabled}
+              className="btn btn-outline-light"
+            >
               Answer
             </button>
 
             {show && (
-              <div>
+              <div className="d-flex justify-content-center text-wrap">
                 {' '}
-                Answer: <br></br>
+                Answer:
                 {show}
               </div>
             )}
@@ -99,4 +116,4 @@ const ClueDiv = () => {
   );
 };
 
-export default memo(ClueDiv);
+export default ClueDiv;

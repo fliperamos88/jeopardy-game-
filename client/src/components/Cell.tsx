@@ -22,7 +22,7 @@ const Cell = ({ cell }: CellProps) => {
     const clickedCell = document.getElementById(cellId);
     clickedCell?.classList.add('clue-clicked');
     clueContext?.setAnswer(true);
-    clueContext?.setClue(cell);
+    clueContext?.setClue(null);
   };
 
   return (
